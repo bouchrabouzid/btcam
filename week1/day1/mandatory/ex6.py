@@ -1,1 +1,0 @@
-# Non, les tuples sont immuables en Python. On ne peut pas modifier leur contenu après création (ni ajouter, ni retirer d’éléments).
