@@ -25,7 +25,7 @@ for i in range(len(word)):
 
 # Print the cleaned-up word
 print("Result:", result)
-git 
+
 
 
 
