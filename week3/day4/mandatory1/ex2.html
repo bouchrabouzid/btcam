@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Exercise</title>
+</head>
+<body>
+
+<form id="myForm">
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="firstname"><br>
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lastname"><br><br>
+  <input type="submit" value="Submit" id="submit">
+</form> 
+
+<ul class="usersAnswer"></ul>
+
+<script>
+  const form = document.getElementById("myForm");
+  console.log(form);
+
+  const fnameInput = document.getElementById("fname");
+  const lnameInput = document.getElementById("lname");
+  console.log(fnameInput, lnameInput);
+
+  const inputsByName = document.getElementsByName("firstname");
+  console.log(inputsByName);
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const fname = fnameInput.value.trim();
+    const lname = lnameInput.value.trim();
+
+    if (fname === "" || lname === "") return;
+
+    const ul = document.querySelector(".usersAnswer");
+    ul.innerHTML = "";
+
+    const li1 = document.createElement("li");
+    li1.textContent = fname;
+
+    const li2 = document.createElement("li");
+    li2.textContent = lname;
+
+    ul.appendChild(li1);
+    ul.appendChild(li2);
+  });
+</script>
+
+</body>
+</html>

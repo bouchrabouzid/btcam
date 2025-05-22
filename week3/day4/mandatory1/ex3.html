@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bold Highlight</title>
+</head>
+<body>
+
+<p id="myParagraph">
+  <strong>Hello</strong> I hope you are enjoying <strong>this</strong> class. At the
+  <strong>end</strong> you <strong>will</strong> be great Developers!
+  <strong>Enjoy</strong> the <strong>JavaScript</strong> lessons
+</p>
+
+<script>
+  let allBoldItems;
+
+  function getBoldItems() {
+    allBoldItems = document.querySelectorAll("strong");
+  }
+
+  function highlight() {
+    allBoldItems.forEach(el => el.style.color = "blue");
+  }
+
+  function returnItemsToDefault() {
+    allBoldItems.forEach(el => el.style.color = "black");
+  }
+
+  getBoldItems();
+
+  const paragraph = document.getElementById("myParagraph");
+  paragraph.addEventListener("mouseover", highlight);
+  paragraph.addEventListener("mouseout", returnItemsToDefault);
+</script>
+
+</body>
+</html>

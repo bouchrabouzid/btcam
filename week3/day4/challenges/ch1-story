@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Challenge: Mad Libs</title>
+  <style>
+    label, input, button { display: block; margin: 6px 0; }
+  </style>
+</head>
+<body>
+
+  <h1>Mad Libs</h1>
+
+  <form id="libform">
+    <label for="noun">Noun:</label>
+    <input type="text" id="noun" />
+    
+    <label for="adjective">Adjective:</label>
+    <input type="text" id="adjective" />
+    
+    <label for="person">Someone's Name:</label>
+    <input type="text" id="person" />
+    
+    <label for="verb">Verb:</label>
+    <input type="text" id="verb" />
+    
+    <label for="place">A place:</label>
+    <input type="text" id="place" />
+    
+    <button type="submit" id="lib-button">Lib it!</button>
+  </form>
+
+  <button id="shuffle-button" style="margin-top:10px;">Shuffle Story</button>
+
+  <p>Generated story: <span id="story"></span></p>
+
+  <script>
+    const form = document.getElementById('libform');
+    const storySpan = document.getElementById('story');
+    const shuffleBtn = document.getElementById('shuffle-button');
+
+    const stories = [
+      (noun, adj, person, verb, place) => `${person} went to the ${place} to ${verb} a ${adj} ${noun}.`,
+      (noun, adj, person, verb, place) => `In the ${place}, a ${adj} ${noun} made ${person} ${verb} happily.`,
+      (noun, adj, person, verb, place) => `${person} loves to ${verb} the ${adj} ${noun} near ${place}.`
+    ];
+
+    let currentValues = null;
+
+    function generateStory(values) {
+      const randomIndex = Math.floor(Math.random() * stories.length);
+      return stories[randomIndex](values.noun, values.adjective, values.person, values.verb, values.place);
+    }
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const values = {
+        noun: document.getElementById('noun').value.trim(),
+        adjective: document.getElementById('adjective').value.trim(),
+        person: document.getElementById('person').value.trim(),
+        verb: document.getElementById('verb').value.trim(),
+        place: document.getElementById('place').value.trim(),
+      };
+
+      for (const key in values) {
+        if (!values[key]) {
+          alert(`Please fill in the ${key} field.`);
+          return;
+        }
+      }
+
+      currentValues = values;
+      storySpan.textContent = generateStory(values);
+    });
+
+    shuffleBtn.addEventListener('click', () => {
+      if (!currentValues) {
+        alert("Please submit the form first.");
+        return;
+      }
+      storySpan.textContent = generateStory(currentValues);
+    });
+  </script>
+
+</body>
+</html>
+
