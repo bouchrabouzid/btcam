@@ -1,0 +1,32 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 30px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+.listTasks {
+  width: 300px;
+  margin: auto;
+  text-align: left;
+}
+
+.taskItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 8px 0;
+}
+
+.taskText {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.taskText.done {
+  color: red;
+  text-decoration: line-through;
+}

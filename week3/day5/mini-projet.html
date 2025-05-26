@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Jeu de Coloriage</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background-color: #f0f0f0;
+    }
+
+    .color-picker {
+      margin: 20px;
+    }
+
+    .color {
+      width: 30px;
+      height: 30px;
+      margin: 5px;
+      border: 2px solid #ccc;
+      cursor: pointer;
+    }
+
+    .color.active {
+      border: 3px solid #333;
+    }
+
+    #grid {
+      display: grid;
+      grid-template-columns: repeat(20, 20px);
+      grid-template-rows: repeat(20, 20px);
+      gap: 1px;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    .cell {
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Jeu de Coloriage</h1>
+
+  <div class="color-picker">
+    <button class="color" style="background: red;" data-color="red"></button>
+    <button class="color" style="background: blue;" data-color="blue"></button>
+    <button class="color" style="background: green;" data-color="green"></button>
+    <button class="color" style="background: yellow;" data-color="yellow"></button>
+    <button class="color" style="background: black;" data-color="black"></button>
+  </div>
+
+  <div id="grid"></div>
+
+  <script>
+    const grid = document.getElementById('grid');
+    const colorButtons = document.querySelectorAll('.color');
+    let selectedColor = 'black';
+    let isDrawing = false;
+
+    for (let i = 0; i < 400; i++) {
+      const cell = document.createElement('div');
+      cell.classList.add('cell');
+      cell.addEventListener('mousedown', () => {
+        isDrawing = true;
+        cell.style.backgroundColor = selectedColor;
+      });
+      cell.addEventListener('mouseover', () => {
+        if (isDrawing) {
+          cell.style.backgroundColor = selectedColor;
+        }
+      });
+      grid.appendChild(cell);
+    }
+
+    document.body.addEventListener('mouseup', () => {
+      isDrawing = false;
+    });
+
+    colorButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        selectedColor = button.getAttribute('data-color');
+        colorButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
