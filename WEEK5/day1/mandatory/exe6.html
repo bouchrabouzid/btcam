@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Voyance</title>
+  <style>
+    #fortune {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      color: #2c3e50;
+      margin: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      width: fit-content;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Conteneur où la phrase de voyance va s'afficher -->
+  <div id="fortune"></div>
+
+  <script>
+    // Fonction auto-invoquée qui affiche une prédiction personnalisée
+    (function(nombreEnfants, nomPartenaire, lieu, metier) {
+        const phrase = `Vous serez ${metier} à ${lieu}, marié(e) à ${nomPartenaire}, avec ${nombreEnfants} enfant(s).`;
+        document.getElementById('fortune').innerText = phrase;
+    })(3, 'Sofia', 'Paris', 'ingénieur logiciel'); // Tu peux modifier les valeurs ici
+  </script>
+
+</body>
+</html>

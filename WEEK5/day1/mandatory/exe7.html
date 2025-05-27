@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Bienvenue Utilisateur</title>
+  <style>
+    /* Style pour la barre de navigation */
+    #navbar {
+      background-color: #2c3e50;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+
+    #navbar img {
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    #navbar span {
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barre de navigation -->
+  <nav id="navbar"></nav>
+
+  <!-- Script JS inclus directement dans le fichier -->
+  <script>
+    // Fonction auto-invoquée qui affiche le nom de l'utilisateur connecté
+    (function(nomUtilisateur) {
+        const navbar = document.getElementById('navbar');
+
+        const divUtilisateur = document.createElement('div');
+        divUtilisateur.style.display = 'flex';
+        divUtilisateur.style.alignItems = 'center';
+
+        divUtilisateur.innerHTML = `
+            <img src="https://via.placeholder.com/40" alt="Photo de profil">
+            <span>Bienvenue, ${nomUtilisateur}</span>
+        `;
+
+        navbar.appendChild(divUtilisateur);
+    })('John'); // Tu peux remplacer 'John' par un autre prénom
+  </script>
+
+</body>
+</html>
