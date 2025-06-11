@@ -1,0 +1,16 @@
+CREATE DATABASE userdb;
+\c userdb
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  username VARCHAR(255) UNIQUE NOT NULL,
+  first_name VARCHAR(100),
+  last_name VARCHAR(100)
+);
+
+CREATE TABLE hashpwd (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(255) UNIQUE NOT NULL,
+  password TEXT NOT NULL
+);
