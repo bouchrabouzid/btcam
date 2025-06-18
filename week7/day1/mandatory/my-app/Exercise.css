@@ -1,0 +1,14 @@
+/* Exercise.css */
+p {
+  color: green;
+}
+
+a {
+  color: orange;
+  text-decoration: none;
+}
+
+img {
+  border: 2px solid black;
+  margin: 10px 0;
+}
